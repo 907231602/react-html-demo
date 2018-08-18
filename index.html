@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="react.js"></script>
+    <script src="react-dom.js"></script>
+    <script src="browser.min.js"></script>
+    <style type="text/css">
+        #containter{
+            padding: 50px;
+            background-color: #fff;
+        }
+        .letter{
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            background-color: #ffde00;
+            color: #333;
+            font-family: monospace;
+            font-size: 32px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+        <div id="containter"></div>
+    <script type="text/babel">
+        var destination=document.querySelector("#containter");
+        var Hello = React.createClass({
+            render:function() {
+                return (
+                    <div>
+                        <p>hello world,{this.props.greetTarget}</p>
+                    </div>
+                );
+            }
+        });
+
+        var Letter=React.createClass({
+            render:function () {
+                console.log('+++>>',this);
+                var letterStyle={
+                    padding: 10,
+                margin: 10,
+                display: "inline-block",
+                backgroundColor: this.props.bgcolor,
+                color: "#333",
+                fontFamily: "monospace",
+                fontSize: 32,
+                textAlign: "center"
+                };
+                return(
+                    <div style={letterStyle}>
+                        {this.props.children}
+                    </div>
+                )
+            }
+        });
+
+        ReactDOM.render(
+          // <Hello greetTarget="new world"/> ,
+          <div>
+              <Letter bgcolor="#9f3f3f">T</Letter>
+              <Letter bgcolor="yellow">V</Letter>
+              <Letter bgcolor="green">Z</Letter>
+          </div>,
+
+            // <h1>hello worls!</h1>,
+            destination
+        );
+    </script>
+</body>
+</html>
